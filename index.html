@@ -1,7 +1,125 @@
-<html>
-<body>
-  <title> Testing Page </title>
-  background color = "black"
-  
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Fingerprint Electronic Voting Machine</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <style>
+        .icon-block {
+            padding: 0 15px;
+        }
+
+        .icon-block .material-icons {
+            font-size: inherit;
+        }
+    </style>
+    {% block extra_css %}
+    
+    {% endblock extra_css %}
+</head>
+
+<body >
+
+{% block preloader %}
+
+{% endblock preloader %}
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="{% url 'home' %}" class="brand-logo"> <i class="material-icons">fingerprint</i> EVM</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'voter:voterlist' %}">Voters</a></li>
+                <li><a href="{% url 'voter:candidatelist' %}">Candidates</a></li>
+                <li><a href="{% url 'voter:partylist' %}">party</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'voter:electionlist' %}"> <i class="material-icons">how_to_vote</i> </a></li>
+                <li><a href="{% url 'voter:logout' %}">Logout</a></li>
+                
+                {% else %}
+                <li><a href="{% url 'voter:login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="{% url 'voter:voterlist' %}">Voters</a></li>
+                <li><a href="{% url 'voter:candidatelist' %}">Candidates</a></li>
+                <li><a href="{% url 'voter:partylist' %}">party</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'voter:electionlist' %}"> <i class="material-icons">how_to_vote</i> </a></li>
+                <li><a href="{% url 'voter:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'voter:login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    {% block page_content %}
+    
+    {% endblock page_content %}
+
+
+    <footer class="page-footer light-blue">
+        <div class="container1">
+            <div class="row">
+                <div class="col l6 s12 ">
+                    <h5 class="white-text"><i class="material-icons">fingerprint</i>EVM</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
+                        it's our full time job. Suggestions and support for the same is greatly appreciated.</p>    
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Presented By:</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">DARSHAN BHAVASAR G 1NH20EC403</a></li>
+                        <li><a class="white-text" href="#!">LALITHA C 1NH20EC404</a></li>
+                        <li><a class="white-text" href="#!">RAJESH REDDY R 1NH20EC407</a></li>
+                        <li><a class="white-text" href="#!">LIKITH S 1NH20EC411</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Guided By</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!"> <b>MAHENDRA SN </b></a><sub> BE, M.Tech</sub></li>
+                        <li> Asst Professor, Dept of ECE</li>
+
+                    </ul>
+                    <h5 class="white-text">HOD</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!"><b>Dr ARVINDA K </b></a><sub> BE, M.Tech, PhD</sub></li>
+                        <li> HOD, Dept of ECE</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="center">
+               copyright @ <a class="orange-text text-lighten-3" target="_blank" href="#">ECE </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script>
+        (function ($) {
+            $(function () {
+
+                $('.sidenav').sidenav();
+
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
+    </script>
+    {% block extra_js %}
+    
+    {% endblock extra_js %}
+
 </body>
+
 </html>
