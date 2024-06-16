@@ -1,8 +1,26 @@
-<html>
-    <title>test page</title>
-    <body bgcolor='yellow'>
-        <p1>
-            this is to the test the git hub pages
-        </p1>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Animation</title>
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .welcome-message {
+    animation: fadeIn 3s ease-in-out forwards;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20%;
+    opacity: 0; /* Start with the text invisible */
+  }
+</style>
+</head>
+<body>
+  <div class="welcome-message">
+    Welcome to Our Site!
+  </div>
+</body>
 </html>
